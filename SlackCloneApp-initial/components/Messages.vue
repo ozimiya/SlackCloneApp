@@ -1,0 +1,34 @@
+<template>
+	<div class="chats-container">
+		<Message />
+		<Message />
+		<Message />
+		<Message />
+		<Message />
+		<Message />
+		<Message />
+		<Message />
+		<Message />
+		<Message />
+		<Message />
+		<Message />
+		<Message />
+		<Message />
+		<Message />
+	</div>
+</template>
+
+<script>
+	import Message from '~/components/Message.vue'
+	export default {
+		components: {
+			Message
+		}
+	}
+</script>
+
+<style scoped>
+	.chats-container {
+		padding: 16px;
+	}
+</style>
