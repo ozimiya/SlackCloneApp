@@ -2,16 +2,40 @@
 	<div class="app-layout">
 		<div class="sidebar">
 			<p class="channel-head">チャンネル一覧</p>
-			<ul class="channel-list">
-				<li>#general</li>
-				<li>#rondom</li>
-			</ul>
+			<p v-for="channel in channels">
+				<nuxt-link :to="`/channels/${channel.id}`">{{ channel.name }}</nuxt-link>
+			</p>
+<!--			<ul class="channel-list">-->
+<!--				<li v-for="channel in channels">-->
+<!--					<nuxt-link :to="`/channels/${channel.id}`">{{ channel.name }}</nuxt-link>-->
+<!--				</li>-->
+<!--			</ul>-->
 		</div>
 		<div class="main-content">
 			<nuxt />
 		</div>
 	</div>
 </template>
+
+<script>
+	import { db } from '~/plugins/firebase'
+
+	export default {
+		data() {
+			return {
+				channels: []
+			}
+		},
+		mounted() {
+			// 全てのドキュメントを取得
+			db.collection('channels').get().then((querySnapshot) => {
+				querySnapshot.forEach((doc) => {
+					this.channels.push({id: doc.id, ...doc.data()})
+				});
+			});
+		}
+	}
+</script>
 
 <style>
 
@@ -21,6 +45,10 @@
 }
 ul {
 	padding-left: 0;
+}
+a {
+	color: #FFF;
+	text-decoration: none;
 }
 
 .app-layout {

@@ -1,8 +1,23 @@
 <template>
 	<div class="input-container">
-		<textarea></textarea>
+		<textarea v-on:click="login"></textarea>
 	</div>
 </template>
+
+<script>
+	export default {
+		data() {
+			return {
+				text: 'ログインしてください'
+			}
+		},
+		methods: {
+			login(){
+				alert(this.text);
+			}
+		}
+	}
+</script>
 
 <style scoped>
 	.input-container {

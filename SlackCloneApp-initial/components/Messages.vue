@@ -1,28 +1,18 @@
 <template>
 	<div class="chats-container">
-		<Message />
-		<Message />
-		<Message />
-		<Message />
-		<Message />
-		<Message />
-		<Message />
-		<Message />
-		<Message />
-		<Message />
-		<Message />
-		<Message />
-		<Message />
-		<Message />
-		<Message />
+		<message v-for="message in messages" :message="message"/>
 	</div>
 </template>
 
 <script>
 	import Message from '~/components/Message.vue'
 	export default {
+		props: ['messages'],
 		components: {
 			Message
+		},
+		mounted() {
+			console.log(this.messages);
 		}
 	}
 </script>
