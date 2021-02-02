@@ -1,19 +1,30 @@
 <template>
 	<div class="input-container">
-		<textarea v-on:click="login"></textarea>
+		<textarea v-model="text" v-on:keydown.enter="addMessage"></textarea>
 	</div>
 </template>
 
 <script>
+	import { db } from '~/plugins/firebase';
+
 	export default {
 		data() {
 			return {
-				text: 'ログインしてください'
+				text: null
 			}
 		},
 		methods: {
-			login(){
-				alert(this.text);
+			addMessage(event){
+				if (this.keyDownedForJPConversion(event)) { return }
+				const channelId = this.$route.params.id;
+				db.collection('channels').doc(channelId).collection('messages').add({ text: this.text })
+					.then(()=>{
+						alert('メッセージの保存に成功しました');
+					});
+			},
+			keyDownedForJPConversion(){
+				const codeForConversion = 229;
+				return event.keyCode === codeForConversion;
 			}
 		}
 	}
