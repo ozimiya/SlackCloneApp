@@ -26,7 +26,7 @@
 		},
 		mounted () {
 			const channelId = this.$route.params.id;
-			db.collection('channels').doc(channelId).collection('messages')
+			db.collection('channels').doc(channelId).collection('messages').orderBy('createdAt')
 				.onSnapshot((snapshot) => {
 					//'onSnapshotmessages' → collection に変更があったら何か処理を実行しますよ
 					//snapshotはDBのコピーなのでDBの変更点も取得できる→'snapshot.docChanges()'

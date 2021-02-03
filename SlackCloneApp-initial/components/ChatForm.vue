@@ -17,10 +17,12 @@
 			addMessage(event){
 				if (this.keyDownedForJPConversion(event)) { return }
 				const channelId = this.$route.params.id;
-				db.collection('channels').doc(channelId).collection('messages').add({ text: this.text })
-					.then(()=>{
-						// alert('メッセージの保存に成功しました');
-					});
+				db.collection('channels').doc(channelId).collection('messages').add({
+					text: this.text,
+					createdAt: new Date().getTime()
+				}).then(() => {
+					this.text = null
+				});
 			},
 			keyDownedForJPConversion(){
 				const codeForConversion = 229;
