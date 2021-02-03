@@ -26,16 +26,22 @@
 		},
 		mounted () {
 			const channelId = this.$route.params.id;
-			db.collection('channels').doc(channelId).collection('messages').get()
-			.then((querySnapshot) => {
-				querySnapshot.forEach((doc) => {
-					this.messages.push({id: doc.id, ...doc.data()})
+			db.collection('channels').doc(channelId).collection('messages')
+				.onSnapshot((snapshot) => {
+					//'onSnapshotmessages' → collection に変更があったら何か処理を実行しますよ
+					//snapshotはDBのコピーなのでDBの変更点も取得できる→'snapshot.docChanges()'
+					snapshot.docChanges().forEach((change) => {
+						const doc = change.doc;
+						if (change.type === 'added') {
+							this.messages.push({id: doc.id, ...doc.data()})
+
+						}
+					});
 				});
-			})
 		}
 		// 次は前回チャンネル一覧を取得したように実際にデータを取得してみましょう。
 		// propでid→messageの受け渡しができない
-		}
+	}
 </script>
 
 <style scoped>

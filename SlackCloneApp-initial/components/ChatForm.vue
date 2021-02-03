@@ -19,7 +19,7 @@
 				const channelId = this.$route.params.id;
 				db.collection('channels').doc(channelId).collection('messages').add({ text: this.text })
 					.then(()=>{
-						alert('メッセージの保存に成功しました');
+						// alert('メッセージの保存に成功しました');
 					});
 			},
 			keyDownedForJPConversion(){
