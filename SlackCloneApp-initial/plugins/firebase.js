@@ -4,12 +4,12 @@ import 'firebase/firestore' // データベース機能を使うために読み�
 
 if (!firebase.apps.length) {
 	const config = {
-		apiKey: "AIzaSyBW1ZqIPn9V7NZ8zPsJzTRlP0QuSUtTwA8", // データベースを定義
-		authDomain: "slack-clone-app-f801b.firebaseapp.com",
-		databaseURL: "https://slack-clone-app-f801b.firebaseio.com",
-		projectId: "slack-clone-app-f801b",
-		storageBucket: "slack-clone-app-f801b.appspot.com",
-		messagingSenderId: "557304819506"
+		apiKey: "AIzaSyD_nGv5lRGSzB41hvjypLggnoBWgYAiGfY", // データベースを定義
+		authDomain: "slackcloneapp-ef085.firebaseapp.com",
+		databaseURL: "https://slackcloneapp-ef085.firebaseio.com",
+		projectId: "slackcloneapp-ef085",
+		storageBucket: "slackcloneapp-ef085.appspot.com",
+		messagingSenderId: "G-K43J9J5RYX"
 	};
 	firebase.initializeApp(config);
 }
