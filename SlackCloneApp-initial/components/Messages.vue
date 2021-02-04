@@ -5,19 +5,19 @@
 </template>
 
 <script>
-	import Message from '~/components/Message.vue'
+	import Message from '~/components/Message'
 	export default {
 		props: ['messages'],
 		components: {
 			Message
 		},
-		mounted() {
-			console.log(this.messages);
+		mounted () {
+			console.log(this.messages)
 		}
 	}
 </script>
 
-<style scoped>
+<style>
 	.chats-container {
 		padding: 16px;
 	}
